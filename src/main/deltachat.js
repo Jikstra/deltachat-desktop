@@ -292,6 +292,12 @@ class DeltaChatController {
     else return this._dc.getContacts(...args).map((id) => this._dc.getContact(id).toJson())
   }
 
+  addContactToGroup (contactId, chatId) {
+  }
+
+  removeContactFromGroup (contactId, chatId) {
+  }
+
   createUnverifiedGroup (contacts, name) {
     var chatId = this._dc.createUnverifiedGroupChat(name)
     var results = contacts.map((c) => {

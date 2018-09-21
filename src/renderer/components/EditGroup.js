@@ -3,20 +3,20 @@ const { ipcRenderer } = require('electron')
 
 const GroupScreen = require('./GroupScreen')
 
-class CreateGroup extends React.Component {
+class EditGroup extends React.Component {
   render () {
     const { changeScreen } = this.props
 
-    const createGroup = (group) => {
+    const editGroup = (group) => {
       var { chatId } = ipcRenderer.sendSync('dispatchSync', 'createUnverifiedGroup', group.contacts, group.name)
       changeScreen('ChatView', { chatId })
     }
 
     return (
       <GroupScreen
-        onSubmit={createGroup}
-        text='Create Group' />
+        onSubmit={editGroup}
+        text='Edit Group' />
     )
   }
 }
-module.exports = CreateGroup
+module.exports = EditGroup
