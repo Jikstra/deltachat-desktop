@@ -20,15 +20,15 @@ class SplittedChatListAndView extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      chatId: null
+      chat: null
     }
 
     this.onChatClick = this.onChatClick.bind(this)
   }
 
-  onChatClick (chat) {
-    console.log('xx', chat)
-    this.setState({ chatId: chat.id })
+  onChatClick(chat) {
+    console.log('xx', chat.id)
+    this.setState({chat})
   }
 
   render () {
@@ -72,7 +72,7 @@ class SplittedChatListAndView extends React.Component {
           screenProps={this.props.screenProps}
           userFeedback={this.props.userFeedback}
           changeScreen={this.props.changeScreen}
-          chatId={this.state.chatId}
+          chat={this.state.chat}
           deltachat={this.props.deltachat}/>
 
       </div>
