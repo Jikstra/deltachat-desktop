@@ -54,7 +54,7 @@ class ChatView extends React.Component {
   }
 
   onEditGroup () {
-    const chat = this.getChat()
+    const chat = this.props.chat
     this.props.changeScreen('EditGroup', { chatId: chat.id, chatName: chat.name })
   }
 
@@ -75,15 +75,6 @@ class ChatView extends React.Component {
 
   componentDidMount () {
     this.scrollToBottom()
-  }
-
-  getChat () {
-    const { deltachat } = this.props
-    const { chatId } = this.props.chat
-    const index = deltachat.chats.findIndex(chat => {
-      return chat.id === chatId
-    })
-    return deltachat.chats[index]
   }
 
   scrollToBottom (force) {
@@ -110,7 +101,7 @@ class ChatView extends React.Component {
   }
 
   isGroup () {
-    const chat = this.getChat()
+    const chat = this.props.chat
     return [
       C.DC_CHAT_TYPE_GROUP,
       C.DC_CHAT_TYPE_VERIFIED_GROUP
@@ -121,8 +112,6 @@ class ChatView extends React.Component {
     const { attachmentMessage, setupMessage } = this.state
     const chat = this.props.chat
     if (!chat) return (<div className="ChatView"><p>No chat selected</p></div>)
-
-    this.state.value = chat.textDraft
 
     const isGroup = this.isGroup()
     const tx = window.translate
